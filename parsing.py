@@ -5,5 +5,5 @@ website_bs = bs('website', 'lxml')
 inf = website_bs.find("section", class_="products").find("div", class_="desc")
 print(inf)
 
-
 #как-то использовать product.name
+#почитать документацию
