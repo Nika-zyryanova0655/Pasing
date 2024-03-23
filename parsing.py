@@ -1,9 +1,11 @@
 import requests
 from bs4 import BeautifulSoup as bs
-website = requests.get('https://russiandrone.ru/publications/?show_by=100').text
-website_bs = bs('website', 'lxml')
-inf = website_bs.find("section", class_="products").find("div", class_="desc")
-print(inf)
-
-#как-то использовать product.name
-#почитать документацию
+website = requests.get('https://russiandrone.ru/publications/?show_by=100')
+website_bs = bs(website.text, 'lxml')
+#print(website_bs) #чтение html кода верно
+#inf = website_bs.select("div.name.a")
+#inf = website_bs.find("section",class_="content right")
+pars = website_bs.find('div', class_ = 'left-menu-bl').find('div', class_='cats left-menu-block')
+print(pars)
+for item in pars:
+    print(item.text)
